@@ -1,6 +1,6 @@
 package com.lv.rpc.socket.client;
 
-import com.lv.entity.RpcError;
+import com.lv.enumeration.RpcError;
 import com.lv.entity.RpcRequest;
 import com.lv.entity.RpcResponse;
 import com.lv.enumeration.ResponseCode;

@@ -1,0 +1,136 @@
+[31m2023-07-19 13:52:40.622[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@6108b2d7
+[31m2023-07-19 13:52:40.628[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.t.RpcServer[0;39m [32mline-57[0;39m [36m[0;39m 服务器启动时有错误发生：java.net.BindException: Address already in use (Bind failed)
+[31m2023-07-19 13:53:46.560[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@6108b2d7
+[31m2023-07-19 13:53:46.565[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.t.RpcServer[0;39m [32mline-48[0;39m [36m[0;39m 服务器启动……
+[31m2023-07-19 13:54:03.949[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.t.RpcServer[0;39m [32mline-52[0;39m [36m[0;39m 客户端连接！/127.0.0.1:63262
+[31m2023-07-19 13:54:04.020[0;39m [[32mINFO[0;39m] [35mpool-2-thread-1[0;39m [33mc.l.r.t.HelloServiceImpl[0;39m [32mline-18[0;39m [36m[0;39m 接收到消息: this is test Message
+[31m2023-07-19 13:54:04.020[0;39m [[32mINFO[0;39m] [35mpool-2-thread-1[0;39m [33mc.l.r.h.RequestHandler[0;39m [32mline-24[0;39m [36m[0;39m 服务：com.lv.rpc.api.HelloService成功调用方法：hello
+[31m2023-07-19 14:54:24.199[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@6108b2d7
+[31m2023-07-19 14:54:24.203[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.s.s.SocketServer[0;39m [32mline-50[0;39m [36m[0;39m 服务器启动....
+[31m2023-07-19 14:54:29.795[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 14:54:29.798[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.s.s.SocketServer[0;39m [32mline-54[0;39m [36m[0;39m 客户端连接！/127.0.0.1:52871
+[31m2023-07-19 14:54:29.856[0;39m [[32mERROR[0;39m] [35mmain[0;39m [33mc.l.r.s.c.SocketClient[0;39m [32mline-56[0;39m [36m[0;39m 调用时有错误发生：java.io.NotSerializableException: java.lang.reflect.Parameter
+[31m2023-07-19 14:54:29.865[0;39m [[32mINFO[0;39m] [35mpool-2-thread-1[0;39m [33mc.l.r.h.RequestHandlerThread[0;39m [32mline-44[0;39m [36m[0;39m 调用或发送时发生错误：java.io.WriteAbortedException: writing aborted; java.io.NotSerializableException: java.lang.reflect.Parameter
+[31m2023-07-19 14:55:52.595[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 14:55:52.598[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.s.s.SocketServer[0;39m [32mline-54[0;39m [36m[0;39m 客户端连接！/127.0.0.1:52968
+[31m2023-07-19 14:55:52.648[0;39m [[32mERROR[0;39m] [35mmain[0;39m [33mc.l.r.s.c.SocketClient[0;39m [32mline-54[0;39m [36m[0;39m 调用时有错误发生：java.io.NotSerializableException: java.lang.reflect.Parameter
+[31m2023-07-19 14:55:52.648[0;39m [[32mINFO[0;39m] [35mpool-2-thread-2[0;39m [33mc.l.r.h.RequestHandlerThread[0;39m [32mline-44[0;39m [36m[0;39m 调用或发送时发生错误：java.io.WriteAbortedException: writing aborted; java.io.NotSerializableException: java.lang.reflect.Parameter
+[31m2023-07-19 14:58:52.679[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 14:58:52.682[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.s.s.SocketServer[0;39m [32mline-54[0;39m [36m[0;39m 客户端连接！/127.0.0.1:53659
+[31m2023-07-19 14:58:52.731[0;39m [[32mINFO[0;39m] [35mpool-2-thread-3[0;39m [33mc.l.r.t.HelloServiceImpl[0;39m [32mline-18[0;39m [36m[0;39m 接收到消息: This is test message
+[31m2023-07-19 14:58:52.731[0;39m [[32mINFO[0;39m] [35mpool-2-thread-3[0;39m [33mc.l.r.h.RequestHandler[0;39m [32mline-23[0;39m [36m[0;39m 服务：com.lv.rpc.api.HelloService成功调用方法：hello
+[31m2023-07-19 20:59:08.925[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@6108b2d7
+[31m2023-07-19 21:00:02.084[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@3cb5cdba
+[31m2023-07-19 21:01:15.026[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 21:03:19.574[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 21:04:25.805[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@3cb5cdba
+[31m2023-07-19 21:04:25.895[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.ServerBootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0xbcb5d0a9]'
+[31m2023-07-19 21:04:25.905[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xbcb5d0a9] REGISTERED
+[31m2023-07-19 21:04:25.906[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xbcb5d0a9] BIND: 0.0.0.0/0.0.0.0:9999
+[31m2023-07-19 21:04:25.909[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xbcb5d0a9, L:/0:0:0:0:0:0:0:0:9999] ACTIVE
+[31m2023-07-19 21:04:25.911[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xbcb5d0a9, L:/0:0:0:0:0:0:0:0:9999] INACTIVE
+[31m2023-07-19 21:04:25.911[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xbcb5d0a9, L:/0:0:0:0:0:0:0:0:9999] UNREGISTERED
+[31m2023-07-19 21:04:40.260[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 21:04:40.318[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.Bootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x600061b6]'
+[31m2023-07-19 21:04:40.322[0;39m [[32mWARN[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.c.ChannelInitializer[0;39m [32mline-97[0;39m [36m[0;39m Failed to initialize a channel. Closing: [id: 0x600061b6]
+java.lang.ClassCastException: io.netty.channel.socket.nio.NioServerSocketChannel cannot be cast to io.netty.channel.socket.SocketChannel
+	at com.lv.rpc.netty.client.NettyClient$1.initChannel(NettyClient.java:41)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
+	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:609)
+	at io.netty.channel.DefaultChannelPipeline.access$100(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1463)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1115)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:650)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:502)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:417)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:474)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+[31m2023-07-19 21:05:11.720[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 21:05:11.789[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.Bootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0xeefee61b]'
+[31m2023-07-19 21:05:11.792[0;39m [[32mWARN[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.c.ChannelInitializer[0;39m [32mline-97[0;39m [36m[0;39m Failed to initialize a channel. Closing: [id: 0xeefee61b]
+java.lang.ClassCastException: io.netty.channel.socket.nio.NioServerSocketChannel cannot be cast to io.netty.channel.socket.SocketChannel
+	at com.lv.rpc.netty.client.NettyClient$1.initChannel(NettyClient.java:41)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
+	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:609)
+	at io.netty.channel.DefaultChannelPipeline.access$100(DefaultChannelPipeline.java:46)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1463)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1115)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:650)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:502)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:417)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:474)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:500)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+[31m2023-07-19 21:07:19.360[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 21:07:29.201[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@3cb5cdba
+[31m2023-07-19 21:07:29.304[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.ServerBootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x04f95aa7]'
+[31m2023-07-19 21:07:29.313[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x04f95aa7] REGISTERED
+[31m2023-07-19 21:07:29.313[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x04f95aa7] BIND: 0.0.0.0/0.0.0.0:9999
+[31m2023-07-19 21:07:29.315[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x04f95aa7, L:/0:0:0:0:0:0:0:0:9999] ACTIVE
+[31m2023-07-19 21:07:29.322[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x04f95aa7, L:/0:0:0:0:0:0:0:0:9999] INACTIVE
+[31m2023-07-19 21:07:29.322[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x04f95aa7, L:/0:0:0:0:0:0:0:0:9999] UNREGISTERED
+[31m2023-07-19 21:07:36.573[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@3cb5cdba
+[31m2023-07-19 21:07:36.670[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.ServerBootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x435d70f3]'
+[31m2023-07-19 21:07:36.679[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x435d70f3] REGISTERED
+[31m2023-07-19 21:07:36.679[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x435d70f3] BIND: 0.0.0.0/0.0.0.0:9999
+[31m2023-07-19 21:07:36.681[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x435d70f3, L:/0:0:0:0:0:0:0:0:9999] ACTIVE
+[31m2023-07-19 21:07:36.686[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x435d70f3, L:/0:0:0:0:0:0:0:0:9999] INACTIVE
+[31m2023-07-19 21:07:36.686[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x435d70f3, L:/0:0:0:0:0:0:0:0:9999] UNREGISTERED
+[31m2023-07-19 21:07:42.323[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@3cb5cdba
+[31m2023-07-19 21:07:42.425[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.ServerBootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0xdf454c34]'
+[31m2023-07-19 21:07:42.435[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xdf454c34] REGISTERED
+[31m2023-07-19 21:07:42.435[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xdf454c34] BIND: 0.0.0.0/0.0.0.0:9999
+[31m2023-07-19 21:07:42.437[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xdf454c34, L:/0:0:0:0:0:0:0:0:9999] ACTIVE
+[31m2023-07-19 21:07:42.438[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xdf454c34, L:/0:0:0:0:0:0:0:0:9999] INACTIVE
+[31m2023-07-19 21:07:42.438[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0xdf454c34, L:/0:0:0:0:0:0:0:0:9999] UNREGISTERED
+[31m2023-07-19 21:07:56.653[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@3cb5cdba
+[31m2023-07-19 21:07:56.756[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.ServerBootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x54db54c1]'
+[31m2023-07-19 21:07:56.766[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x54db54c1] REGISTERED
+[31m2023-07-19 21:07:56.767[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x54db54c1] BIND: 0.0.0.0/0.0.0.0:9999
+[31m2023-07-19 21:07:56.769[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x54db54c1, L:/0:0:0:0:0:0:0:0:9999] ACTIVE
+[31m2023-07-19 21:07:56.774[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x54db54c1, L:/0:0:0:0:0:0:0:0:9999] INACTIVE
+[31m2023-07-19 21:07:56.774[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x54db54c1, L:/0:0:0:0:0:0:0:0:9999] UNREGISTERED
+[31m2023-07-19 21:07:58.310[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@3cb5cdba
+[31m2023-07-19 21:07:58.438[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.ServerBootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x338ceee5]'
+[31m2023-07-19 21:07:58.453[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x338ceee5] REGISTERED
+[31m2023-07-19 21:07:58.455[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x338ceee5] BIND: 0.0.0.0/0.0.0.0:9999
+[31m2023-07-19 21:07:58.457[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x338ceee5, L:/0:0:0:0:0:0:0:0:9999] ACTIVE
+[31m2023-07-19 21:07:58.475[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x338ceee5, L:/0:0:0:0:0:0:0:0:9999] INACTIVE
+[31m2023-07-19 21:07:58.475[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x338ceee5, L:/0:0:0:0:0:0:0:0:9999] UNREGISTERED
+[31m2023-07-19 21:08:03.458[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 21:08:58.424[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.r.DefaultServiceRegistry[0;39m [32mline-44[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@3cb5cdba
+[31m2023-07-19 21:08:58.525[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.ServerBootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x85c2e88b]'
+[31m2023-07-19 21:08:58.537[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x85c2e88b] REGISTERED
+[31m2023-07-19 21:08:58.537[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x85c2e88b] BIND: 0.0.0.0/0.0.0.0:9999
+[31m2023-07-19 21:08:58.539[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x85c2e88b, L:/0:0:0:0:0:0:0:0:9999] ACTIVE
+[31m2023-07-19 21:09:07.630[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 21:09:07.841[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.n.c.NettyClient[0;39m [32mline-56[0;39m [36m[0;39m 客户端连接到服务端127.0.0.1：9999
+[31m2023-07-19 21:09:07.890[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x85c2e88b, L:/0:0:0:0:0:0:0:0:9999] READ: [id: 0xbe4138a7, L:/127.0.0.1:9999 - R:/127.0.0.1:58327]
+[31m2023-07-19 21:09:07.891[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x85c2e88b, L:/0:0:0:0:0:0:0:0:9999] READ COMPLETE
+[31m2023-07-19 21:09:07.893[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mc.l.r.n.c.NettyClient[0;39m [32mline-62[0;39m [36m[0;39m 客户端发送消息：RpcRequest(interfaceName=com.lv.rpc.api.HelloService, methodName=hello, parameters=[HelloObject(id=12, message=this is netty style)], paramTypes=[class com.lv.rpc.api.HelloObject])
+[31m2023-07-19 21:09:08.044[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-3-1[0;39m [33mc.l.r.n.s.NettyServerHandler[0;39m [32mline-33[0;39m [36m[0;39m 服务端接收到请求：RpcRequest(interfaceName=com.lv.rpc.api.HelloService, methodName=hello, parameters=[HelloObject(id=12, message=this is netty style)], paramTypes=[class com.lv.rpc.api.HelloObject])
+[31m2023-07-19 21:09:08.044[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-3-1[0;39m [33mc.l.r.t.HelloServiceImpl[0;39m [32mline-18[0;39m [36m[0;39m 接收到消息: this is netty style
+[31m2023-07-19 21:09:08.044[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-3-1[0;39m [33mc.l.r.h.RequestHandler[0;39m [32mline-23[0;39m [36m[0;39m 服务：com.lv.rpc.api.HelloService成功调用方法：hello
+[31m2023-07-19 21:10:10.624[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.RpcClientProxy[0;39m [32mline-43[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-19 21:10:11.016[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x85c2e88b, L:/0:0:0:0:0:0:0:0:9999] READ: [id: 0x62ed317f, L:/127.0.0.1:9999 - R:/127.0.0.1:58396]
+[31m2023-07-19 21:10:11.017[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x85c2e88b, L:/0:0:0:0:0:0:0:0:9999] READ COMPLETE
+[31m2023-07-19 21:10:11.017[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.n.c.NettyClient[0;39m [32mline-56[0;39m [36m[0;39m 客户端连接到服务端127.0.0.1：9999
+[31m2023-07-19 21:10:11.061[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mc.l.r.n.c.NettyClient[0;39m [32mline-62[0;39m [36m[0;39m 客户端发送消息：RpcRequest(interfaceName=com.lv.rpc.api.HelloService, methodName=hello, parameters=[HelloObject(id=12, message=this is netty style)], paramTypes=[class com.lv.rpc.api.HelloObject])
+[31m2023-07-19 21:10:11.063[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-3-2[0;39m [33mc.l.r.n.s.NettyServerHandler[0;39m [32mline-33[0;39m [36m[0;39m 服务端接收到请求：RpcRequest(interfaceName=com.lv.rpc.api.HelloService, methodName=hello, parameters=[HelloObject(id=12, message=this is netty style)], paramTypes=[class com.lv.rpc.api.HelloObject])
+[31m2023-07-19 21:10:11.063[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-3-2[0;39m [33mc.l.r.t.HelloServiceImpl[0;39m [32mline-18[0;39m [36m[0;39m 接收到消息: this is netty style
+[31m2023-07-19 21:10:11.063[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-3-2[0;39m [33mc.l.r.h.RequestHandler[0;39m [32mline-23[0;39m [36m[0;39m 服务：com.lv.rpc.api.HelloService成功调用方法：hello

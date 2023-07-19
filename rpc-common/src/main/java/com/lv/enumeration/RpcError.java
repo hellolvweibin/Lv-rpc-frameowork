@@ -1,4 +1,4 @@
-package com.lv.entity;
+package com.lv.enumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

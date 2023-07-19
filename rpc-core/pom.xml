@@ -26,7 +26,7 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.90.Final</version>
+            <version>4.1.51.Final</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -48,7 +48,7 @@
             <artifactId>kryo</artifactId>
             <version>4.0.2</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.lv</groupId>
             <artifactId>test-server</artifactId>

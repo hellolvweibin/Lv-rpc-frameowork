@@ -1,6 +1,6 @@
 package com.lv.rpc.register;
 
-import com.lv.entity.RpcError;
+import com.lv.enumeration.RpcError;
 import com.lv.exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 

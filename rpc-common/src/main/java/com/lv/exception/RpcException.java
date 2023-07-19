@@ -1,6 +1,6 @@
 package com.lv.exception;
 
-import com.lv.entity.RpcError;
+import com.lv.enumeration.RpcError;
 
 /**
  * @Project ：Lv-rpc-framework
