@@ -2,7 +2,6 @@ package com.lv.rpc.transport;
 
 import com.lv.entity.RpcRequest;
 import com.lv.entity.RpcResponse;
-import io.protostuff.Rpc;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
