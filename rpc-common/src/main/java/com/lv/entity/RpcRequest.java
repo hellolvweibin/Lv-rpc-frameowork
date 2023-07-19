@@ -1,7 +1,9 @@
 package com.lv.entity;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
@@ -11,7 +13,8 @@ import java.io.Serializable;
  * @description ：传输格式（传输协议）：客户端向服务端传输的对象
  */
 @Data
-@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RpcRequest implements Serializable {
     /**
      * 待调用接口名称

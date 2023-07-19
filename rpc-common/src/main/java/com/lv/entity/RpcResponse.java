@@ -2,6 +2,7 @@ package com.lv.entity;
 
 import com.lv.enumeration.ResponseCode;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.val;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.io.Serializable;
  * @description ：服务端处理完后，向客户端返回的对象
  */
 @Data
+@NoArgsConstructor
 public class RpcResponse<T> implements Serializable {
     private Integer statusCode;
 

@@ -1,7 +1,5 @@
 package com.lv.rpc.handler;
 
-
-
 import com.lv.entity.RpcRequest;
 import com.lv.entity.RpcResponse;
 import com.lv.rpc.register.ServiceRegistry;
@@ -16,7 +14,7 @@ import java.net.Socket;
  * @Project ：Lv-rpc-framework
  * @Author ：Levi_Bee
  * @Date ：2023/7/18 22:24
- * @description ：处理客户端RpcRequest的工作线程
+ * @description ：IO传输模式|处理客户端RpcRequest的工作线程
  */
 @Slf4j
 public class RequestHandlerThread implements Runnable{

@@ -2,6 +2,7 @@ package com.lv.rpc.api;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -12,6 +13,7 @@ import java.io.Serializable;
  * @description ：定义客户端传给服务端的接口的参数
  */
 @Data
+@NoArgsConstructor
 //添加一个含有所有已声明字段属性参数的构造函数
 @AllArgsConstructor
 

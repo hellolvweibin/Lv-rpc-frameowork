@@ -1,6 +1,5 @@
 package com.lv.rpc.handler;
 
-import com.lv.entity.RpcError;
 import com.lv.entity.RpcRequest;
 import com.lv.entity.RpcResponse;
 import com.lv.enumeration.ResponseCode;
