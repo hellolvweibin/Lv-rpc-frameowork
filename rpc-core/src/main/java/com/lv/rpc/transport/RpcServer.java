@@ -9,14 +9,16 @@ import com.lv.rpc.serializer.CommonSerializer;
  * @description ：服务端通用类接口
  */
 public interface RpcServer {
+
+    int DEFAULT_SERIALIZER = CommonSerializer.KRYO_SERIALIZER;
+
     void start();
 
     /**
      * @description 向Nacos注册服务
+     * @param [service, serviceClass]
      * @return [void]
      * @date [2021-03-13 15:56]
      */
-    <T> void publishService(Object service, Class<T> serviceClass);
-
-    void setSerializer(CommonSerializer serializer);
+    <T> void publishService(T service, Class<T> serviceClass);
 }

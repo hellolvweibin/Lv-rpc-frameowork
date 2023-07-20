@@ -19,7 +19,7 @@ import java.util.List;
 public class NacosServiceDiscovery implements ServiceDiscovery{
     private final NamingService namingService;
 
-    public NacosServiceDiscovery(NamingService namingService) {
+    public NacosServiceDiscovery() {
         this.namingService = namingService;
     }
 

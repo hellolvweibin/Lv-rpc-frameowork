@@ -2,6 +2,7 @@ package com.lv.rpc.transport.netty.server;
 
 import com.lv.enumeration.RpcError;
 import com.lv.exception.RpcException;
+import com.lv.rpc.hook.ShutdownHook;
 import com.lv.rpc.transport.RpcServer;
 import com.lv.rpc.codec.CommonDecoder;
 import com.lv.rpc.codec.CommonEncoder;
@@ -18,9 +19,11 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetSocketAddress;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Project ：Lv-rpc-framework
@@ -30,30 +33,48 @@ import java.net.InetSocketAddress;
  */
 @Slf4j
 public class NettyServer implements RpcServer {
+
+
     private final String host;
     private final int port;
+
     private final ServiceRegistry serviceRegistry;
     private final ServiceProvider serviceProvider;
-    private CommonSerializer serializer;
+    private final CommonSerializer serializer;
 
     public NettyServer(String host, int port) {
+        this(host, port, DEFAULT_SERIALIZER);
+    }
+
+    public NettyServer(String host, int port, Integer serializerCode) {
         this.host = host;
         this.port = port;
         serviceRegistry = new NacosServiceRegistry();
         serviceProvider = new ServiceProviderImpl();
+        serializer = CommonSerializer.getByCode(serializerCode);
     }
-    public <T> void publishService(Object service, Class<T> serviceClass) {
+
+    /**
+     * @description 将服务保存在本地的注册表，同时注册到Nacos
+     * @param [service, serviceClass]
+     * @return [void]
+     * @date [2021-03-13 16:02]
+     */
+    @Override
+    public <T> void publishService(T service, Class<T> serviceClass) {
         if (serializer == null) {
             log.error("未设置序列化器");
             throw new RpcException(RpcError.SERIALIZER_NOT_FOUND);
         }
-        serviceProvider.addServiceProvider(service);
+        serviceProvider.addServiceProvider(service, serviceClass);
         serviceRegistry.register(serviceClass.getCanonicalName(), new InetSocketAddress(host, port));
         start();
     }
 
     @Override
     public void start() {
+        //添加注销服务的钩子，服务端关闭时才会执行
+        ShutdownHook.getShutdownHook().addClearAllHook();
         //用于处理客户端新连接的主”线程池“
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         //用于连接后处理IO事件的从”线程池“
@@ -79,9 +100,11 @@ public class NettyServer implements RpcServer {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             //初始化管道
                             ChannelPipeline pipeline = ch.pipeline();
-                            //往管道中添加Handler，注意入站Handler与出站Handler都必须按实际执行顺序添加，比如先解码再Server处理，那Decoder()就要放在前面。
+                            //往管道中添加Handler，注意入站Handler与出站Handler都必须按实际执行顺序添加，比如先解码再Server处理，那Decoder()就要放在前面
                             //但入站和出站Handler之间则互不影响，这里我就是先添加的出站Handler再添加的入站
-                            pipeline.addLast(new CommonEncoder(new KryoSerializer()))
+                            //设定IdleStateHandler心跳检测每30秒进行一次读检测，如果30秒内ChannelRead()方法未被调用则触发一次userEventTrigger()方法
+                            pipeline.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS))
+                                    .addLast(new CommonEncoder(serializer))
                                     .addLast(new CommonDecoder())
                                     .addLast(new NettyServerHandler());
                         }
@@ -97,13 +120,6 @@ public class NettyServer implements RpcServer {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }
-    }
-
-
-
-    @Override
-    public void setSerializer(CommonSerializer serializer) {
-        this.serializer = serializer;
     }
 
 }
