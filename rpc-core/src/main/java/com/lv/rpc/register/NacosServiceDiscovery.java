@@ -3,6 +3,8 @@ package com.lv.rpc.register;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.api.naming.NamingService;
 import com.alibaba.nacos.api.naming.pojo.Instance;
+import com.lv.rpc.loadbalancer.LoadBalancer;
+import com.lv.rpc.loadbalancer.RandomLoadBalancer;
 import com.lv.util.NacosUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,10 +19,15 @@ import java.util.List;
  */
 @Slf4j
 public class NacosServiceDiscovery implements ServiceDiscovery{
-    private final NamingService namingService;
+    private final LoadBalancer loadBalancer;
 
-    public NacosServiceDiscovery() {
-        this.namingService = namingService;
+    public NacosServiceDiscovery(LoadBalancer loadBalancer) {
+        if(loadBalancer == null){
+            this.loadBalancer = new RandomLoadBalancer();
+        }else {
+            this.loadBalancer = loadBalancer;
+        }
+
     }
 
     /**
@@ -29,7 +36,7 @@ public class NacosServiceDiscovery implements ServiceDiscovery{
     @Override
     public InetSocketAddress lookupService(String serviceName) {
         try {
-            List<Instance> instances = NacosUtil.getAllInstance(namingService,serviceName);
+            List<Instance> instances = NacosUtil.getAllInstance(serviceName);
             Instance instance = instances.get(0);
             return new InetSocketAddress(instance.getIp(),instance.getPort());
         } catch (NacosException e) {
