@@ -9,7 +9,10 @@ import com.lv.exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.InetSocketAddress;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Project ：Lv-rpc-framework
@@ -19,7 +22,14 @@ import java.util.List;
  */
 @Slf4j
 public class NacosUtil {
+    private static final NamingService namingService;
+    private static final Set<String> serviceNames = new HashSet<>();
+    private static InetSocketAddress address;
     private static final String SERVER_ADDR = "127.0.0.1:8849";
+
+    static {
+        namingService = getNacosNamingService();
+    }
 
     /**
      * 连接到Nacos创建命名空间
@@ -45,6 +55,25 @@ public class NacosUtil {
      */
     public static List<Instance> getAllInstance(NamingService namingService, String serviceName) throws NacosException {
         return namingService.getAllInstances(serviceName);
+    }
+
+    public static void clearRegistry() {
+        //所有的服务名称都被存储在serviceNames中
+        if(!serviceNames.isEmpty() && address != null) {
+            String host = address.getHostName();
+            int port = address.getPort();
+            //利用迭代器迭代注销
+            Iterator<String> iterator = serviceNames.iterator();
+            while (iterator.hasNext()) {
+                String serviceName = iterator.next();
+                try {
+                    //注销服务
+                    namingService.deregisterInstance(serviceName, host, port);
+                }catch (NacosException e) {
+                    log.error("注销服务{}失败", serviceName, e);
+                }
+            }
+        }
     }
 
 

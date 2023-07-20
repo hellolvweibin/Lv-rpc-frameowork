@@ -3,6 +3,7 @@ package com.lv.facatory;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Map;
 import java.util.concurrent.*;
 
 /**
@@ -21,6 +22,10 @@ public class ThreadPoolFactory {
     private static final int KEEP_ALIVE_TIME = 1;
 
     private static final int BLOCKING_QUEUE_CAPACITY = 100;
+    /**
+     * 利用Map管理多个线程池
+     */
+    private static Map<String, ExecutorService> threadPoolMap = new ConcurrentHashMap<>();
 
     private ThreadPoolFactory() {
     }
@@ -28,15 +33,30 @@ public class ThreadPoolFactory {
         return createDefaultThreadPool(threadNamePrefix, false);
     }
 
-    public static ExecutorService createDefaultThreadPool(String threadNamePrefix,Boolean daemon){
+    /**
+     * 优化线程池,利用Map，线程池前缀名作为Key，线程为Value
+     */
+    public static ExecutorService createDefaultThreadPool(String threadNamePrefix, Boolean daemon){
+        //computeIfAbsent()：如果key对应的value存在，则直接返回value，如果不存在则使用第二个参数（函数）计算的值作为value返回，并保存为该key的value
+        ExecutorService pool = threadPoolMap.computeIfAbsent(threadNamePrefix, k -> createThreadPool(threadNamePrefix, daemon));
+        //isShutdown()：当调用shutdown()或shutdownNow()方法后返回为true
+        //isTerminated()：当调用shutdown()方法后，并且所有提交的任务完成后返回为true;当调用shutdownNow()方法后，成功停止后返回为true;
+        if(pool.isShutdown() || pool.isTerminated()){
+            threadPoolMap.remove(threadNamePrefix);
+            //重新构建一个线程池并存入Map中
+            pool = createThreadPool(threadNamePrefix, daemon);
+            threadPoolMap.put(threadNamePrefix, pool);
+        }
+        return pool;
+    }
+    private static ExecutorService createThreadPool(String threadNamePrefix, Boolean daemon){
         /**
          * 设置上限为100个线程的阻塞队列
          */
-        ArrayBlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(BLOCKING_QUEUE_CAPACITY);
-        ThreadFactory threadFactory = creatThreadFactory(threadNamePrefix, daemon);
-        return new ThreadPoolExecutor(CORE_POOL_SIZE,MAXIMUM_POOL_SIZE,KEEP_ALIVE_TIME,TimeUnit.MINUTES,workQueue,threadFactory);
-
-
+        BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(BLOCKING_QUEUE_CAPACITY);
+        ThreadFactory threadFactory = createThreadFactory(threadNamePrefix, daemon);
+        //创建线程池
+        return new ThreadPoolExecutor(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.MINUTES, workQueue, threadFactory);
     }
     /**
      * @description 创建ThreadFactory，如果threadNamePrefix不为空则使用自建ThreadFactory，否则使用defaultThreadFactory
@@ -44,7 +64,7 @@ public class ThreadPoolFactory {
      * @param daemon 指定是否为Daemon Thread(守护线程)，当所有的非守护线程结束时，程序也就终止了，同时会杀死进程中的所有守护线程
      * @return [java.util.concurrent.ThreadFactory]
      */
-    private static ThreadFactory creatThreadFactory(String threadNamePrefix, Boolean daemon){
+    private static ThreadFactory createThreadFactory(String threadNamePrefix, Boolean daemon){
         if(threadNamePrefix!=null){
             if(daemon!=null){
                 //利用guava中的ThreadFactoryBuilder自定义创建线程工厂
@@ -57,6 +77,24 @@ public class ThreadPoolFactory {
         return Executors.defaultThreadFactory();
 
     }
+    public static void shutDownAll(){
+        log.info("关闭所有线程池……");
+        //利用parallelStream()并行关闭所有线程池
+        threadPoolMap.entrySet().parallelStream().forEach(entry -> {
+            ExecutorService executorService = entry.getValue();
+            executorService.shutdown();
+            log.info("关闭线程池 [{}] [{}]", entry.getKey(), executorService.isTerminated());
+            try {
+                //阻塞直到关闭请求后所有任务执行完，或者发生超时，或者当前线程被中断（以先发生者为准）。
+                executorService.awaitTermination(10, TimeUnit.SECONDS);
+            }catch (InterruptedException e){
+                log.error("关闭线程池失败");
+                //直接关闭不等任务执行完了
+                executorService.shutdownNow();
+            }
+        });
+    }
+
 
 
 
