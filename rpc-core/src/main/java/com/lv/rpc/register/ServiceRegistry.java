@@ -24,6 +24,6 @@ public interface ServiceRegistry {
      * @return [java.net.InetSocketAddress] 服务端地址
      * @date [2021-03-13 14:45]
      */
-    InetSocketAddress lookupService(String serviceName);
+//    InetSocketAddress lookupService(String serviceName);
 
 }
