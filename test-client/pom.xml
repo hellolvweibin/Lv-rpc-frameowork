@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>test-server</artifactId>
+    <artifactId>test-client</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -19,13 +19,13 @@
     <dependencies>
         <dependency>
             <groupId>com.lv</groupId>
-            <artifactId>rpc-api</artifactId>
+            <artifactId>rpc-core</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.lv</groupId>
-            <artifactId>rpc-core</artifactId>
+            <artifactId>rpc-api</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

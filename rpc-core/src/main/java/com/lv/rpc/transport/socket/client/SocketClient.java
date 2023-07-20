@@ -4,6 +4,10 @@ import com.lv.entity.RpcRequest;
 import com.lv.entity.RpcResponse;
 import com.lv.enumeration.RpcError;
 import com.lv.exception.RpcException;
+import com.lv.rpc.loadbalancer.LoadBalancer;
+import com.lv.rpc.loadbalancer.RandomLoadBalancer;
+import com.lv.rpc.register.NacosServiceDiscovery;
+import com.lv.rpc.register.ServiceDiscovery;
 import com.lv.rpc.transport.RpcClient;
 import com.lv.rpc.register.NacosServiceRegistry;
 import com.lv.rpc.register.ServiceRegistry;
@@ -12,6 +16,8 @@ import com.lv.rpc.transport.socket.util.ObjectReader;
 import com.lv.rpc.transport.socket.util.ObjectWriter;
 import com.lv.util.RpcMessageChecker;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,22 +33,39 @@ import java.net.Socket;
  */
 @Slf4j
 public class SocketClient implements RpcClient {
-    private final ServiceRegistry serviceRegistry;
-    private CommonSerializer serializer;
 
+    private static final Logger logger = LoggerFactory.getLogger(SocketClient.class);
+
+    private final ServiceDiscovery serviceDiscovery;
+
+    private final CommonSerializer serializer;
 
     public SocketClient() {
-        serviceRegistry = new NacosServiceRegistry();
-
+        //以默认序列化器调用构造函数
+        this(DEFAULT_SERIALIZER, new RandomLoadBalancer());
     }
+
+    public SocketClient(LoadBalancer loadBalancer){
+        this(DEFAULT_SERIALIZER, loadBalancer);
+    }
+
+    public SocketClient(Integer serializerCode){
+        this(serializerCode, new RandomLoadBalancer());
+    }
+
+    public SocketClient(Integer serializerCode, LoadBalancer loadBalancer) {
+        serviceDiscovery = new NacosServiceDiscovery(loadBalancer);
+        serializer = CommonSerializer.getByCode(serializerCode);
+    }
+
     @Override
-    public Object sendRequest(RpcRequest rpcRequest) {
+    public Object sendRequest(RpcRequest rpcRequest){
         if (serializer == null) {
-            log.error("未设置序列化器");
+            logger.error("未设置序列化器");
             throw new RpcException(RpcError.SERIALIZER_NOT_FOUND);
         }
         //从Nacos获取提供对应服务的服务端地址
-        InetSocketAddress inetSocketAddress = serviceRegistry.lookupService(rpcRequest.getInterfaceName());
+        InetSocketAddress inetSocketAddress = serviceDiscovery.lookupService(rpcRequest.getInterfaceName());
         /**
          * socket套接字实现TCP网络传输
          * try()中一般放对资源的申请，若{}出现异常，()资源会自动关闭
@@ -55,15 +78,11 @@ public class SocketClient implements RpcClient {
             Object obj = ObjectReader.readObject(inputStream);
             RpcResponse rpcResponse = (RpcResponse) obj;
             RpcMessageChecker.check(rpcRequest, rpcResponse);
-            return rpcResponse.getData();
+            return rpcResponse;
         } catch (IOException e) {
-            log.error("调用时有错误发生：" + e);
+            logger.error("调用时有错误发生：" + e);
             throw new RpcException("服务调用失败：", e);
         }
+    }
 
-    }
-    @Override
-    public void setSerializer(CommonSerializer serializer) {
-        this.serializer = serializer;
-    }
 }

@@ -9,6 +9,8 @@ import com.lv.enumeration.RpcError;
 import com.lv.exception.RpcException;
 import com.lv.util.NacosUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
 import java.util.List;
@@ -22,11 +24,7 @@ import java.util.List;
 @Slf4j
 public class NacosServiceRegistry implements ServiceRegistry{
 
-    public final NamingService namingService;
-
-    public NacosServiceRegistry(){
-        namingService = NacosUtil.getNacosNamingService();
-    }
+    private static final Logger logger = LoggerFactory.getLogger(NacosServiceRegistry.class);
 
     /**
      * @description 将服务的名称和地址注册进服务注册中心
@@ -38,9 +36,9 @@ public class NacosServiceRegistry implements ServiceRegistry{
     public void register(String serviceName, InetSocketAddress inetSocketAddress) {
         try {
             //向Nacos注册服务
-            NacosUtil.registerService(namingService, serviceName, inetSocketAddress);
+            NacosUtil.registerService(serviceName, inetSocketAddress);
         }catch (NacosException e) {
-            log.error("注册服务时有错误发生" + e);
+            logger.error("注册服务时有错误发生" + e);
             throw new RpcException(RpcError.REGISTER_SERVICE_FAILED);
         }
     }
