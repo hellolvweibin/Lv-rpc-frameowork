@@ -16,16 +16,28 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class RpcResponse<T> implements Serializable {
+    /**
+     * 响应对应的请求号
+     */
+    private String requestId;
+    /**
+     * 响应状态码
+     */
     private Integer statusCode;
-
+    /**
+     * 响应状态码对应的信息
+     */
     private String message;
-
+    /**
+     * 成功时的响应数据
+     */
     private T data;
+
 
     /**
      * @description 成功时服务端返回的对象
      */
-    public static <T> RpcResponse<T> success(T data){
+    public static <T> RpcResponse<T> success(T data) {
         RpcResponse<T> response = new RpcResponse<>();
         response.setStatusCode(ResponseCode.SUCCESS.getCode());
         response.setData(data);
@@ -36,7 +48,7 @@ public class RpcResponse<T> implements Serializable {
     /**
      * @description 失败时服务端返回的对象
      */
-    public static <T> RpcResponse<T> fail(T data){
+    public static <T> RpcResponse<T> fail(T data) {
         RpcResponse<T> response = new RpcResponse<>();
         response.setStatusCode(ResponseCode.FAIL.getCode());
         response.setData(data);
