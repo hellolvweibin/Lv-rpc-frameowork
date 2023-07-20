@@ -1,8 +1,7 @@
 import com.lv.rpc.api.HelloService;
-import com.lv.rpc.register.DefaultServiceRegistry;
-import com.lv.rpc.socket.server.SocketServer;
+import com.lv.rpc.serializer.KryoSerializer;
 import com.lv.rpc.test.HelloServiceImpl;
-import com.lv.rpc.transport.RpcServer;
+import com.lv.rpc.transport.socket.server.SocketServer;
 
 /**
  * @Project ：Lv-rpc-framework
@@ -12,15 +11,9 @@ import com.lv.rpc.transport.RpcServer;
  */
 public class SocketTestServer {
     public static void main(String[] args) {
-        //创建服务对象
         HelloService helloService = new HelloServiceImpl();
-        //创建服务容器
-        DefaultServiceRegistry serviceRegistry = new DefaultServiceRegistry();
-        //注册服务对象到服务容器中
-        serviceRegistry.register(helloService);
-        //将服务容器纳入到服务端
-        SocketServer socketServer = new SocketServer(serviceRegistry);
-        socketServer.start(9000);
-
+        SocketServer socketServer = new SocketServer("127.0.0.1", 9998);
+        socketServer.setSerializer(new KryoSerializer());
+        socketServer.publishService(helloService, HelloService.class);
     }
 }

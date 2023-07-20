@@ -1,6 +1,7 @@
-package com.lv.rpc;
+package com.lv.rpc.transport;
 
 import com.lv.entity.RpcRequest;
+import com.lv.rpc.serializer.CommonSerializer;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -20,5 +21,5 @@ public interface RpcClient {
     Object sendRequest(RpcRequest rpcRequest);
 
 
-
+    void setSerializer(CommonSerializer serializer);
 }

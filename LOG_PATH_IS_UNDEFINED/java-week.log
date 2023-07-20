@@ -34,7 +34,7 @@
 [31m2023-07-19 21:04:40.318[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.Bootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x600061b6]'
 [31m2023-07-19 21:04:40.322[0;39m [[32mWARN[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.c.ChannelInitializer[0;39m [32mline-97[0;39m [36m[0;39m Failed to initialize a channel. Closing: [id: 0x600061b6]
 java.lang.ClassCastException: io.netty.channel.socket.nio.NioServerSocketChannel cannot be cast to io.netty.channel.socket.SocketChannel
-	at com.lv.rpc.netty.client.NettyClient$1.initChannel(NettyClient.java:41)
+	at com.lv.rpc.transport.client.netty.NettyClient$1.initChannel(NettyClient.java:41)
 	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
 	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
 	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
@@ -57,7 +57,7 @@ java.lang.ClassCastException: io.netty.channel.socket.nio.NioServerSocketChannel
 [31m2023-07-19 21:05:11.789[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.Bootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0xeefee61b]'
 [31m2023-07-19 21:05:11.792[0;39m [[32mWARN[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.c.ChannelInitializer[0;39m [32mline-97[0;39m [36m[0;39m Failed to initialize a channel. Closing: [id: 0xeefee61b]
 java.lang.ClassCastException: io.netty.channel.socket.nio.NioServerSocketChannel cannot be cast to io.netty.channel.socket.SocketChannel
-	at com.lv.rpc.netty.client.NettyClient$1.initChannel(NettyClient.java:41)
+	at com.lv.rpc.transport.client.netty.NettyClient$1.initChannel(NettyClient.java:41)
 	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:129)
 	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:112)
 	at io.netty.channel.AbstractChannelHandlerContext.callHandlerAdded(AbstractChannelHandlerContext.java:938)
@@ -161,3 +161,36 @@ java.lang.ClassCastException: io.netty.channel.socket.nio.NioServerSocketChannel
 [31m2023-07-19 22:01:31.769[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-3-1[0;39m [33mc.l.r.n.s.NettyServerHandler[0;39m [32mline-33[0;39m [36m[0;39m 服务端接收到请求：RpcRequest(interfaceName=com.lv.rpc.api.HelloService, methodName=hello, parameters=[HelloObject(id=12, message=this is netty style)], paramTypes=[class com.lv.rpc.api.HelloObject])
 [31m2023-07-19 22:01:31.769[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-3-1[0;39m [33mc.l.r.t.HelloServiceImpl[0;39m [32mline-18[0;39m [36m[0;39m 接收到消息: this is netty style
 [31m2023-07-19 22:01:31.769[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-3-1[0;39m [33mc.l.r.h.RequestHandler[0;39m [32mline-23[0;39m [36m[0;39m 服务：com.lv.rpc.api.HelloService成功调用方法：hello
+[31m2023-07-20 15:50:09.402[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.p.ServiceProviderImpl[0;39m [32mline-45[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@12405818
+[31m2023-07-20 15:50:09.861[0;39m [[32mWARN[0;39m] [35mmain[0;39m [33mi.n.b.ServerBootstrap[0;39m [32mline-452[0;39m [36m[0;39m Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x11de388f]'
+[31m2023-07-20 15:50:09.869[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x11de388f] REGISTERED
+[31m2023-07-20 15:50:09.870[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x11de388f] BIND: /127.0.0.1:9999
+[31m2023-07-20 15:50:09.872[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x11de388f, L:/127.0.0.1:9999] ACTIVE
+[31m2023-07-20 15:50:15.813[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.t.RpcClientProxy[0;39m [32mline-35[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-20 15:50:16.069[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mc.l.r.t.n.c.ChannelProvider[0;39m [32mline-80[0;39m [36m[0;39m 客户端连接成功
+[31m2023-07-20 15:50:16.076[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x11de388f, L:/127.0.0.1:9999] READ: [id: 0x6a4b9aab, L:/127.0.0.1:9999 - R:/127.0.0.1:56805]
+[31m2023-07-20 15:50:16.077[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x11de388f, L:/127.0.0.1:9999] READ COMPLETE
+[31m2023-07-20 15:50:16.122[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mc.l.r.t.n.c.NettyClient[0;39m [32mline-53[0;39m [36m[0;39m 客户端发送消息：RpcRequest(requestId=8c31ef6c-99ba-4851-83ea-67e1e78681b2, interfaceName=com.lv.rpc.api.HelloService, methodName=hello, parameters=[HelloObject(id=12, message=this is netty style)], paramTypes=[class com.lv.rpc.api.HelloObject])
+[31m2023-07-20 15:50:16.173[0;39m [[32mINFO[0;39m] [35mnetty-server-handler-0[0;39m [33mc.l.r.t.n.s.NettyServerHandler[0;39m [32mline-36[0;39m [36m[0;39m 服务端接收到请求：RpcRequest(requestId=8c31ef6c-99ba-4851-83ea-67e1e78681b2, interfaceName=com.lv.rpc.api.HelloService, methodName=hello, parameters=[HelloObject(id=12, message=this is netty style)], paramTypes=[class com.lv.rpc.api.HelloObject])
+[31m2023-07-20 15:50:16.173[0;39m [[32mINFO[0;39m] [35mnetty-server-handler-0[0;39m [33mc.l.r.t.HelloServiceImpl[0;39m [32mline-18[0;39m [36m[0;39m 接收到消息: this is netty style
+[31m2023-07-20 15:50:16.173[0;39m [[32mINFO[0;39m] [35mnetty-server-handler-0[0;39m [33mc.l.r.h.RequestHandler[0;39m [32mline-33[0;39m [36m[0;39m 服务：com.lv.rpc.api.HelloService成功调用方法：hello
+[31m2023-07-20 15:50:16.188[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mc.l.r.t.n.c.NettyClientHandler[0;39m [32mline-22[0;39m [36m[0;39m 客户端接收到消息：RpcResponse(requestId=8c31ef6c-99ba-4851-83ea-67e1e78681b2, statusCode=200, message=null, data=成功调用hello()方法+id:12)
+[31m2023-07-20 15:51:48.075[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.p.ServiceProviderImpl[0;39m [32mline-45[0;39m [36m[0;39m 向接口：[interface com.lv.rpc.api.HelloService] 注册服务：com.lv.rpc.test.HelloServiceImpl@6a396c1e
+[31m2023-07-20 15:51:48.148[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.t.s.s.SocketServer[0;39m [32mline-75[0;39m [36m[0;39m 服务器启动……
+[31m2023-07-20 15:51:52.693[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.t.RpcClientProxy[0;39m [32mline-35[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-20 15:51:52.856[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x11de388f, L:/127.0.0.1:9999] READ: [id: 0x0d76f61c, L:/127.0.0.1:9999 - R:/127.0.0.1:56924]
+[31m2023-07-20 15:51:52.857[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x11de388f, L:/127.0.0.1:9999] READ COMPLETE
+[31m2023-07-20 15:51:52.860[0;39m [[32mERROR[0;39m] [35mnioEventLoopGroup-3-2[0;39m [33mc.l.r.c.CommonDecoder[0;39m [32mline-32[0;39m [36m[0;39m 不识别的协议包：-1095041334
+[31m2023-07-20 15:51:52.861[0;39m [[32mERROR[0;39m] [35mnioEventLoopGroup-3-2[0;39m [33mc.l.r.t.n.s.NettyServerHandler[0;39m [32mline-51[0;39m [36m[0;39m 处理过程调用时有错误发生：
+[31m2023-07-20 15:51:52.863[0;39m [[32mERROR[0;39m] [35mnioEventLoopGroup-3-2[0;39m [33mc.l.r.c.CommonDecoder[0;39m [32mline-32[0;39m [36m[0;39m 不识别的协议包：0
+[31m2023-07-20 15:51:52.863[0;39m [[32mERROR[0;39m] [35mnioEventLoopGroup-3-2[0;39m [33mc.l.r.t.n.s.NettyServerHandler[0;39m [32mline-51[0;39m [36m[0;39m 处理过程调用时有错误发生：
+[31m2023-07-20 15:51:52.889[0;39m [[32mERROR[0;39m] [35mmain[0;39m [33mc.l.r.t.s.c.SocketClient[0;39m [32mline-60[0;39m [36m[0;39m 调用时有错误发生：java.net.SocketException: Connection reset
+[31m2023-07-20 15:52:16.436[0;39m [[32mINFO[0;39m] [35mmain[0;39m [33mc.l.r.t.RpcClientProxy[0;39m [32mline-35[0;39m [36m[0;39m 调用方法：com.lv.rpc.api.HelloService#hello
+[31m2023-07-20 15:52:16.677[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x11de388f, L:/127.0.0.1:9999] READ: [id: 0x051723b3, L:/127.0.0.1:9999 - R:/127.0.0.1:56935]
+[31m2023-07-20 15:52:16.679[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mi.n.h.l.LoggingHandler[0;39m [32mline-148[0;39m [36m[0;39m [id: 0x11de388f, L:/127.0.0.1:9999] READ COMPLETE
+[31m2023-07-20 15:52:16.679[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mc.l.r.t.n.c.ChannelProvider[0;39m [32mline-80[0;39m [36m[0;39m 客户端连接成功
+[31m2023-07-20 15:52:16.730[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mc.l.r.t.n.c.NettyClient[0;39m [32mline-53[0;39m [36m[0;39m 客户端发送消息：RpcRequest(requestId=6c8e6a7a-5795-4a69-9173-cc6e8f37a74d, interfaceName=com.lv.rpc.api.HelloService, methodName=hello, parameters=[HelloObject(id=12, message=this is netty style)], paramTypes=[class com.lv.rpc.api.HelloObject])
+[31m2023-07-20 15:52:16.732[0;39m [[32mINFO[0;39m] [35mnetty-server-handler-1[0;39m [33mc.l.r.t.n.s.NettyServerHandler[0;39m [32mline-36[0;39m [36m[0;39m 服务端接收到请求：RpcRequest(requestId=6c8e6a7a-5795-4a69-9173-cc6e8f37a74d, interfaceName=com.lv.rpc.api.HelloService, methodName=hello, parameters=[HelloObject(id=12, message=this is netty style)], paramTypes=[class com.lv.rpc.api.HelloObject])
+[31m2023-07-20 15:52:16.733[0;39m [[32mINFO[0;39m] [35mnetty-server-handler-1[0;39m [33mc.l.r.t.HelloServiceImpl[0;39m [32mline-18[0;39m [36m[0;39m 接收到消息: this is netty style
+[31m2023-07-20 15:52:16.733[0;39m [[32mINFO[0;39m] [35mnetty-server-handler-1[0;39m [33mc.l.r.h.RequestHandler[0;39m [32mline-33[0;39m [36m[0;39m 服务：com.lv.rpc.api.HelloService成功调用方法：hello
+[31m2023-07-20 15:52:16.746[0;39m [[32mINFO[0;39m] [35mnioEventLoopGroup-2-1[0;39m [33mc.l.r.t.n.c.NettyClientHandler[0;39m [32mline-22[0;39m [36m[0;39m 客户端接收到消息：RpcResponse(requestId=6c8e6a7a-5795-4a69-9173-cc6e8f37a74d, statusCode=200, message=null, data=成功调用hello()方法+id:12)

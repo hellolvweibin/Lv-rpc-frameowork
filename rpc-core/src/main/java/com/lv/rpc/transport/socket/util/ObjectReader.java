@@ -1,4 +1,4 @@
-package com.lv.rpc.socket.util;
+package com.lv.rpc.transport.socket.util;
 
 import com.lv.entity.RpcRequest;
 import com.lv.entity.RpcResponse;

@@ -1,21 +1,29 @@
 package com.lv.rpc.register;
 
+import java.net.InetSocketAddress;
+
 /**
  * @Project ：Lv-rpc-framework
  * @Author ：Levi_Bee
- * @Date ：2023/7/18 21:58
+ * @Date ：2023/7/20 14:41
  * @description ：服务注册接口
  */
 public interface ServiceRegistry {
+
     /**
      * @description 将一个服务注册到注册表
-     * @param service 待注册的服务实体
-     * @param <T> 服务实体类
+     * @param [ServiceName, inetSocketAddress] 服务名称，提供服务的地址
+     * @return [void]
+     * @date [2021-03-13 14:44]
      */
-     <T> void register(T service);
+    void register(String serviceName, InetSocketAddress inetSocketAddress);
 
-     /**
-      * @description 根据服务名获取服务实体
-      */
-     Object getService(String serviceName);
+    /**
+     * @description 根据服务名查找服务端地址
+     * @param [serviceName]
+     * @return [java.net.InetSocketAddress] 服务端地址
+     * @date [2021-03-13 14:45]
+     */
+    InetSocketAddress lookupService(String serviceName);
+
 }

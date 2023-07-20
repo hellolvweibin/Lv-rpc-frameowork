@@ -1,9 +1,10 @@
-package com.lv.rpc.register;
+package com.lv.rpc.provider;
 
 import com.lv.enumeration.RpcError;
 import com.lv.exception.RpcException;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.imageio.spi.ServiceRegistry;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,10 +13,10 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Project ：Lv-rpc-framework
  * @Author ：Levi_Bee
  * @Date ：2023/7/18 22:04
- * @description ：默认的服务注册表/将包含注册新的serviceMap 和 registeredService 都改成了 static ，这样就能保证全局唯一的注册信息，整个服务端就只有一个服务注册表
+ * @description ：默认的服务注册表，保存服务端本地服务
  */
 @Slf4j
-public class DefaultServiceRegistry implements ServiceRegistry{
+public class ServiceProviderImpl implements ServiceProvider {
     /**
      * key = 服务名称(即接口名), value = 服务实体(即实现类的实例对象)
      */
@@ -26,7 +27,7 @@ public class DefaultServiceRegistry implements ServiceRegistry{
     private static final Set<String> registerService = ConcurrentHashMap.newKeySet();
 
     @Override
-    public synchronized  <T> void register(T service) {
+    public synchronized  <T> void addServiceProvider(T service) {
         //getCanonicalName返回由 Java 语言规范定义的基础类的规范名称
         String serviceImplName = service.getClass().getCanonicalName();
         if(registerService.contains(serviceImplName)){
@@ -46,7 +47,7 @@ public class DefaultServiceRegistry implements ServiceRegistry{
     }
 
     @Override
-    public synchronized Object getService(String serviceName) {
+    public synchronized Object getServiceProvider(String serviceName) {
         Object service = serviceMap.get(serviceName);
         if(service == null){
             throw new RpcException(RpcError.SERVICE_NOT_FOUND);

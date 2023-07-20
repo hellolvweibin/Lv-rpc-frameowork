@@ -1,9 +1,8 @@
 package netty;
 
 import com.lv.rpc.api.HelloService;
-import com.lv.rpc.netty.server.NettyServer;
-import com.lv.rpc.register.DefaultServiceRegistry;
-import com.lv.rpc.register.ServiceRegistry;
+import com.lv.rpc.transport.netty.server.NettyServer;
+import com.lv.rpc.serializer.KryoSerializer;
 import com.lv.rpc.test.HelloServiceImpl;
 
 /**
@@ -15,9 +14,8 @@ import com.lv.rpc.test.HelloServiceImpl;
 public class NettyTestServer {
     public static void main(String[] args) {
         HelloService helloService = new HelloServiceImpl();
-        ServiceRegistry registry = new DefaultServiceRegistry();
-        registry.register(helloService);
-        NettyServer server = new NettyServer();
-        server.start(9999);
+        NettyServer server = new NettyServer("127.0.0.1", 9999);
+        server.setSerializer(new KryoSerializer());
+        server.publishService(helloService, HelloService.class);
     }
 }

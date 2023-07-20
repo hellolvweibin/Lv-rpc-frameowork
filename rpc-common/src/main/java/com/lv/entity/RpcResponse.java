@@ -37,23 +37,23 @@ public class RpcResponse<T> implements Serializable {
     /**
      * @description 成功时服务端返回的对象
      */
-    public static <T> RpcResponse<T> success(T data) {
+    public static <T> RpcResponse<T> success(T data, String requestId){
         RpcResponse<T> response = new RpcResponse<>();
+        response.setRequestId(requestId);
         response.setStatusCode(ResponseCode.SUCCESS.getCode());
         response.setData(data);
         return response;
-
     }
 
     /**
      * @description 失败时服务端返回的对象
      */
-    public static <T> RpcResponse<T> fail(T data) {
+    public static <T> RpcResponse<T> fail(ResponseCode code, String requestId){
         RpcResponse<T> response = new RpcResponse<>();
-        response.setStatusCode(ResponseCode.FAIL.getCode());
-        response.setData(data);
+        response.setRequestId(requestId);
+        response.setStatusCode(code.getCode());
+        response.setMessage(code.getMessage());
         return response;
-
     }
 
 }

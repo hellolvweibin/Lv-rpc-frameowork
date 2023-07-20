@@ -1,13 +1,12 @@
-package com.lv.rpc;
+package com.lv.rpc.transport;
 
 import com.lv.entity.RpcRequest;
-import com.lv.entity.RpcResponse;
-import com.lv.rpc.RpcClient;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.UUID;
 
 /**
  * @Project ：Lv-rpc-framework
@@ -20,30 +19,22 @@ public class RpcClientProxy implements InvocationHandler {
 
     private final RpcClient client;
 
-
-    /**
-     * 指明服务端的位置
-     */
     public RpcClientProxy(RpcClient client) {
         this.client = client;
     }
 
-    /**
-     *抑制编译器产生警告信息
-     */
+    //抑制编译器产生警告信息
     @SuppressWarnings("unchecked")
     public <T> T getProxy(Class<T> clazz){
         //创建代理对象
-        return (T) Proxy.newProxyInstance(clazz.getClassLoader(),new Class<?>[]{clazz},this);
-
+        return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class<?>[]{clazz}, this);
     }
 
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    public Object invoke(Object proxy, Method method, Object[] args) {
         log.info("调用方法：{}#{}", method.getDeclaringClass().getName(), method.getName());
-        RpcRequest rpcRequest = new RpcRequest(method.getDeclaringClass().getName(),
+        RpcRequest rpcRequest = new RpcRequest(UUID.randomUUID().toString(), method.getDeclaringClass().getName(),
                 method.getName(), args, method.getParameterTypes());
         return client.sendRequest(rpcRequest);
-
     }
 }
